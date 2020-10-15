@@ -1,0 +1,22 @@
+{
+  "name": "shopping_website",
+  "version": "1.0.0",
+  "description": "MERN Shopping App",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aadarshp31/ShoppingApp.git"
+  },
+  "author": "Adarsh Pandey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aadarshp31/ShoppingApp/issues"
+  },
+  "homepage": "https://github.com/aadarshp31/ShoppingApp#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
