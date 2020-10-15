@@ -1,7 +1,7 @@
-const express = require('express')
+import express from 'express'
 const app = express()
-const products = require('./data/products')
-const dotenv = require('dotenv')
+import products from './data/products.js'
+import dotenv from 'dotenv'
 dotenv.config()
 
 app.get('/', (req, res) => {
