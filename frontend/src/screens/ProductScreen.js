@@ -9,7 +9,7 @@ const ProductScreen = ({ match }) => {
 
   useEffect(() => {
     fetchProduct()
-  })
+  }, [])
 
   const fetchProduct = async () => {
     const { data } = await axios.get(`/api/products/${match.params.id}`)
@@ -31,7 +31,7 @@ const ProductScreen = ({ match }) => {
             </ListGroup.Item>
             <ListGroup.Item>
               <Rating
-                value={product.rating}
+                value={product.rating || 0}
                 text={`${product.numReviews} reviews`}
               />
             </ListGroup.Item>
