@@ -51,7 +51,7 @@ const Rating = ({ value, text, color }) => {
           }
         ></i>
       </span>
-      <p> {value}/{text && text}</p>
+      <p> {value}/5 from {text && text}</p>
     </div>
   )
 }
