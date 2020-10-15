@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col, Image, Card, ListGroup, Button } from 'react-bootstrap'
 import axios from 'axios'
@@ -9,7 +9,7 @@ const ProductScreen = ({ match }) => {
 
   useEffect(() => {
     fetchProduct()
-  }, [])
+  })
 
   const fetchProduct = async () => {
     const { data } = await axios.get(`/api/products/${match.params.id}`)
@@ -59,7 +59,12 @@ const ProductScreen = ({ match }) => {
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
-                <Button className='btn-block' disabled={product.countInStock === 0}>Add to Cart</Button>
+                <Button
+                  className='btn-block'
+                  disabled={product.countInStock === 0}
+                >
+                  Add to Cart
+                </Button>
               </ListGroup.Item>
             </ListGroup>
           </Card>
