@@ -5,17 +5,17 @@ import {
   PRODUCT_LIST_FAIL,
 } from '../constants/productConstants.js'
 
-export const listProducts = () => async dispath => {
+export const listProducts = () => async dispatch => {
   try {
-    dispath({ type: PRODUCT_LIST_REQUEST })
+    dispatch({ type: PRODUCT_LIST_REQUEST })
     const { data } = await axios.get('/api/products')
 
-    dispatchEvent({
+    dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data,
     })
   } catch (error) {
-    dispatchEvent({
+    dispatch({
       type: PRODUCT_LIST_FAIL,
       payload:
         error.response && error.response.data.message
