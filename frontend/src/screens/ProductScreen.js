@@ -11,8 +11,8 @@ import {
   FormControl,
 } from 'react-bootstrap'
 import Rating from '../components/Rating.js'
-import Loader from '../components/loader.js'
-import Message from '../components/message.js'
+import Loader from '../components/Loader.js'
+import Message from '../components/Message.js'
 import { listProductDetails } from '../actions/productActions.js'
 
 const ProductScreen = ({ history, match }) => {
