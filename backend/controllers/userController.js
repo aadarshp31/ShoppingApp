@@ -31,7 +31,9 @@ const authUser = asyncHandler(async (req, res) => {
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  let { name, email, password } = req.body
+  let { name, lastname, email, password } = req.body
+  name = name && name.toLowerCase()
+  lastname = lastname && lastname.toLowerCase()
   email = email && email.toLowerCase()
   const userExists = await User.findOne({ email })
 
@@ -42,6 +44,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   const user = await User.create({
     name,
+    lastname,
     email,
     password,
   })
@@ -50,6 +53,7 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(201).json({
       _id: user._id,
       name: user.name,
+      lastname: user.lastname,
       email: user.email,
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
@@ -69,6 +73,7 @@ const getUserProfile = (req, res) => {
     res.json({
       _id: user._id,
       name: user.name,
+      lastname: user.lastname,
       email: user.email,
       isAdmin: user.isAdmin,
     })
