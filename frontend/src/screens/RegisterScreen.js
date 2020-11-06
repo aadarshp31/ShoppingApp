@@ -33,8 +33,9 @@ const RegisterScreen = ({ location, history }) => {
     if (password !== confirmPassword) {
       setValidationMessage("Passwords don't match! try again...")
       document.getElementById('password').focus()
+    } else {
+      dispatch(register(email, password, name, lastname))
     }
-    dispatch(register(email, password, name, lastname))
   }
 
   return (
@@ -53,6 +54,8 @@ const RegisterScreen = ({ location, history }) => {
             placeholder='Enter name'
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required={true}
+            minLength={2}
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='lastname'>
@@ -71,6 +74,7 @@ const RegisterScreen = ({ location, history }) => {
             placeholder='Enter Email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required={true}
           ></Form.Control>
           <Form.Text className='text-muted'>
             We'll never share your email with anyone else.
@@ -84,9 +88,12 @@ const RegisterScreen = ({ location, history }) => {
             placeholder='Enter Password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required={true}
+            pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$'
+            title='Password must contain at least 6 characters, 1 uppercase , 1 lowercase , and 1 number'
           ></Form.Control>
           <Form.Text className='text-muted'>
-            We'll never share your password with anyone else.
+            At least 6 characters, 1 uppercase, 1 lowercase, and 1 number
           </Form.Text>
         </Form.Group>
         <Form.Group controlId='confirmPassword'>
@@ -97,6 +104,7 @@ const RegisterScreen = ({ location, history }) => {
             placeholder='Confirm password'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            required={true}
           ></Form.Control>
           <Form.Text className='text-muted'>
             We'll never share your password with anyone else.
