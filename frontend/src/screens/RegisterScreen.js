@@ -20,7 +20,7 @@ const RegisterScreen = ({ location, history }) => {
 
   const dispatch = useDispatch()
 
-  const redirect = location.search ? location.search.split('=')[1] : '/'
+  const redirect = location.search ? location.search.split('=')[1] : ''
 
   useEffect(() => {
     if (userInfo) {
@@ -117,7 +117,7 @@ const RegisterScreen = ({ location, history }) => {
 
       <Row className='py-3'>
         <Col>
-          New Customer?{' '}
+          Already have an account?{' '}
           <Link to={redirect ? `/login/redirect=${redirect}` : `/login`}>
             Login
           </Link>
