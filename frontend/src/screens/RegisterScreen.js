@@ -15,9 +15,8 @@ const RegisterScreen = ({ location, history }) => {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [validationMessage, setValidationMessage] = useState(null)
 
-  const userLogin = useSelector((state) => state.userLogin)
-  const { loading, error, userInfo } = userLogin
-  console.log(error)
+  const userRegister = useSelector((state) => state.userRegister)
+  const { loading, error, userInfo } = userRegister
 
   const dispatch = useDispatch()
 
@@ -35,6 +34,7 @@ const RegisterScreen = ({ location, history }) => {
       setValidationMessage("Passwords don't match! try again...")
       document.getElementById('password').focus()
     } else {
+      setValidationMessage(null)
       dispatch(register(email, password, name, lastname))
     }
   }
@@ -49,7 +49,9 @@ const RegisterScreen = ({ location, history }) => {
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='name'>
-          <Form.Label>Name</Form.Label>
+          <Form.Label>
+            Name<span className='text-danger'>*</span>
+          </Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter name'
@@ -69,7 +71,9 @@ const RegisterScreen = ({ location, history }) => {
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='email'>
-          <Form.Label>Email Address</Form.Label>
+          <Form.Label>
+            Email Address<span className='text-danger'>*</span>
+          </Form.Label>
           <Form.Control
             type='email'
             placeholder='Enter Email'
@@ -82,7 +86,9 @@ const RegisterScreen = ({ location, history }) => {
           </Form.Text>
         </Form.Group>
         <Form.Group controlId='password'>
-          <Form.Label>Enter Password</Form.Label>
+          <Form.Label>
+            Enter Password<span className='text-danger'>*</span>
+          </Form.Label>
           <Form.Control
             type='password'
             placeholder='Enter Password'
@@ -97,7 +103,9 @@ const RegisterScreen = ({ location, history }) => {
           </Form.Text>
         </Form.Group>
         <Form.Group controlId='confirmPassword'>
-          <Form.Label>Confirm password</Form.Label>
+          <Form.Label>
+            Confirm password<span className='text-danger'>*</span>
+          </Form.Label>
           <Form.Control
             type='password'
             placeholder='Confirm password'
