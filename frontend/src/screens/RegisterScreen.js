@@ -17,6 +17,7 @@ const RegisterScreen = ({ location, history }) => {
 
   const userLogin = useSelector((state) => state.userLogin)
   const { loading, error, userInfo } = userLogin
+  console.log(error)
 
   const dispatch = useDispatch()
 
@@ -83,7 +84,6 @@ const RegisterScreen = ({ location, history }) => {
         <Form.Group controlId='password'>
           <Form.Label>Enter Password</Form.Label>
           <Form.Control
-            id='password'
             type='password'
             placeholder='Enter Password'
             value={password}
@@ -99,7 +99,6 @@ const RegisterScreen = ({ location, history }) => {
         <Form.Group controlId='confirmPassword'>
           <Form.Label>Confirm password</Form.Label>
           <Form.Control
-            id='confirmPassword'
             type='password'
             placeholder='Confirm password'
             value={confirmPassword}
