@@ -4,6 +4,7 @@ import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
   USER_REGISTER_FAIL,
+  USER_REGISTER_INFO_CLEAR,
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
 } from '../constants/userConstants'
@@ -80,6 +81,10 @@ export const register = (email, password, name, lastname = '') => async (
     dispatch({
       type: USER_LOGIN_SUCCESS,
       payload: data,
+    })
+
+    dispatch({
+      type: USER_REGISTER_INFO_CLEAR,
     })
 
     localStorage.setItem('userInfo', JSON.stringify(data))
