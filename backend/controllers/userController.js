@@ -111,4 +111,4 @@ const updateUserProfile = (req, res) => {
   }
 }
 
-export { authUser, registerUser, getUserProfile }
+export { authUser, registerUser, getUserProfile, updateUserProfile }
