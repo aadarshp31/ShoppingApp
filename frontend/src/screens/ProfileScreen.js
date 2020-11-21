@@ -53,7 +53,7 @@ const ProfileScreen = ({ location, history }) => {
         <h2>User Profile</h2>
         <p>
           Account type:{' '}
-          {user.isAdmin ? (
+          {user?.isAdmin ? (
             <span className='text-info'>Admin</span>
           ) : (
             <span className='text-info'>Customer</span>
