@@ -7,6 +7,9 @@ import {
   USER_REGISTER_SUCCESS,
   USER_REGISTER_FAIL,
   USER_REGISTER_INFO_CLEAR,
+  USER_DETAILS_SUCCESS,
+  USER_DETAILS_REQUEST,
+  USER_DETAILS_FAIL,
 } from '../constants/userConstants'
 
 export const userLoginReducer = (state = {}, action) => {
@@ -34,6 +37,19 @@ export const userRegisterReducer = (state = {}, action) => {
       return { loading: false, error: action.payload }
     case USER_REGISTER_INFO_CLEAR:
       return {}
+    default:
+      return state
+  }
+}
+
+export const userDetailsReducer = (state = { user: {} }, action) => {
+  switch (action.type) {
+    case USER_DETAILS_REQUEST:
+      return { ...state, loading: true }
+    case USER_DETAILS_SUCCESS:
+      return { loading: false, userInfo: action.payload }
+    case USER_DETAILS_FAIL:
+      return { loading: false, error: action.payload }
     default:
       return state
   }
